@@ -55,8 +55,7 @@
 
         <br><br>
         {% endfor %}
-
-        <div align="center"><button type="submit" >Enviar</button></div>
+        <div align="center"><a class="btn btn-primary" href="{% url 'juego:vistar_partida' partida.pk %}">Enviar</a></div>
     </form>
     </div>
 {% endblock%}

@@ -16,4 +16,5 @@ urlpatterns = [
     path("editar_respuesta/<int:identificador>", views.editar_respuesta, name="editar_respuesta"),
     path('eliminar_respuesta/<int:identificador>', views.eliminar_respuesta, name="eliminar_respuesta"),
     path('confirmar_eliminacionn/<int:identificador>', views.confirmar_eliminacionn, name="confirmar_eliminacionn"),
+    path('vistar_partida/<int:identificador>', views.vistar_partida, name="vistar_partida"),
 ]

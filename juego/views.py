@@ -154,5 +154,8 @@ def confirmar_eliminacionn(request, identificador):
     Respuesta.objects.get(pk=identificador).delete()
     return redirect("juego:respuestas")
 
-
+@login_required(login_url='/login')
+def vistar_partida(request, identificador):
+    partida = Respuesta.objects.get(pk=identificador)
+    return render(request, 'juego/vistar_partida.html', {"partida": partida})
 
