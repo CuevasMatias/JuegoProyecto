@@ -23,10 +23,11 @@
 </nav>
 <p class="h1 m-3" align="center">Detalles de Respuestas</p>
 {% block body %}
-    {{respuesta.puntaje}}
+<p class="h5 m-1">Respuesta: {{respuesta.opcion}}</p>
     <br>
-    {{respuesta.opcion}}
+<p class="h5 m-1">Pregunta :  {{respuesta.id_pregunta}}</p>
     <br>
-    {{respuesta.id_pregunta}}
+<p class="h5 m-1">Puntuaje :  {{respuesta.puntaje}}</p>
 
+<div align="center"><a class="btn btn-warning" href="{% url 'juego:editar_respuesta' respuesta.pk %}">Editar</a></div>
 {% endblock %}

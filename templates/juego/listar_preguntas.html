@@ -35,18 +35,18 @@
     <form action="" method="POST">
     {% csrf_token %}
         {% for key,value in data.items%}
-        {% if value.categoria.categoria == 'Historia' %}
+        <p class="h5 m-1"> {% if value.categoria.categoria == 'Historia' %}</p>
         <div align="center" class="alert alert-warning col-lg-11" role="alert">{{value.categoria}}</div>
-        {% elif value.categoria.categoria == 'Deporte' %}
+        <p class="h5 m-1">{% elif value.categoria.categoria == 'Deporte' %}</p>
          <div align="center" class="alert alert-info col-lg-11" role="alert">{{value.categoria}}</div>
-        {% elif value.categoria.categoria == 'Cultura y Arte' %}
+        <p class="h5 m-1">{% elif value.categoria.categoria == 'Cultura y Arte' %}</p>
         <div align="center" class="alert alert-success col-lg-11" role="alert">{{value.categoria}}</div>
-        {% elif value.categoria.categoria == 'Economia' %}
+        <p class="h5 m-1"> {% elif value.categoria.categoria == 'Economia' %}</p>
         <div align="center" class="alert alert-primary col-lg-11" role="alert">{{value.categoria}}</div>
-        {% else %}
+        <p class="h5 m-1"> {% else %}</p>
         <div align="center" class="alert alert-danger col-lg-11" role="alert">{{value.categoria}}</div>
         {% endif %}
-             {{key}} <br>
+        <div align="center"> <p class="h6 m-1">{{key}}</p> <br></div>
                 <select name="{{forloop.counter}}">
                 {% for opcion in value.opciones %}
                     <option value="{{opcion.id}}">{{opcion.opcion}}</option>
@@ -55,7 +55,8 @@
 
         <br><br>
         {% endfor %}
-        <div align="center"><button type="submit" class="btn btn-primary">Enviar</button></div>
+
+        <div align="center"><button type="submit" >Enviar</button></div>
     </form>
     </div>
 {% endblock%}

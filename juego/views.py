@@ -10,7 +10,7 @@ from .models import Categoria
 def listar_preguntas(request):
     if request.method == "POST":
         resultado = 0
-        for i in range(1, 3):
+        for i in range(1, 10):
             opcion = Respuesta.objects.get(pk=request.POST[str(i)])
             resultado += opcion.puntaje
         Partida.objects.create(usuario=request.user, fecha=datetime.now, resultado=resultado)
@@ -38,7 +38,7 @@ def preguntas(request):
     preguntas= Pregunta.objects.all()
     return render(request, 'juego/preguntas.html', {"preguntas": preguntas})
 
-
+@permission_required('juedo.views_pregunta', login_url='/login')
 @login_required(login_url='/login')
 def detalle_pregunta(request, identificador):
     pregunta = Pregunta.objects.get(pk=identificador)
@@ -61,7 +61,7 @@ def crear_pregunta(request):
             return redirect('juego:preguntas')
     return render(request, 'juego/crear_pregunta.html', {'form': form})
 
-
+@permission_required('juedo.change_pregunta', login_url='/login')
 @login_required(login_url='/login')
 def editar_pregunta(request, identificador):
     pregunta= Pregunta.objects.get(pk=identificador)
@@ -77,7 +77,7 @@ def editar_pregunta(request, identificador):
         form = PreguntaForm(instance=pregunta)
     return render(request, 'juego/editar_pregunta.html', {'form': form})
 
-
+@permission_required('juedo.delete_pregunta', login_url='/login')
 @login_required(login_url='/login')
 def eliminar_pregunta(request, identificador):
     pregunta = Pregunta.objects.get(pk=identificador)
@@ -89,6 +89,7 @@ def confirmar_eliminacion(request, identificador):
     Pregunta.objects.get(pk=identificador).delete()
     return redirect("juego:preguntas")
 
+@permission_required('juedo.add_respuesta', login_url='/login')
 @login_required(login_url='/login')
 def crear_respuesta(request):
     form = RespuestaForm()
@@ -125,7 +126,7 @@ def crear_respuesta(request):
             return redirect('juego:respuestas')
     return render(request, 'juego/crear_respuesta.html', {'form': form})
 
-
+@permission_required('juedo.change_respuesta', login_url='/login')
 @login_required(login_url='/login')
 def editar_respuesta(request, identificador):
     respuesta= Respuesta.objects.get(pk=identificador)
@@ -141,7 +142,7 @@ def editar_respuesta(request, identificador):
         form = RespuestaForm(instance=respuesta)
     return render(request, 'juego/editar_respuesta.html', {'form': form})
 
-
+@permission_required('juedo.delete_respuesta', login_url='/login')
 @login_required(login_url='/login')
 def eliminar_respuesta(request, identificador):
     respuesta = Respuesta.objects.get(pk=identificador)
@@ -152,3 +153,6 @@ def eliminar_respuesta(request, identificador):
 def confirmar_eliminacionn(request, identificador):
     Respuesta.objects.get(pk=identificador).delete()
     return redirect("juego:respuestas")
+
+
+

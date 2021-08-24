@@ -41,3 +41,4 @@ def logout(request):
 
 def home(request):
     return render(request,"usuario/home.html")
+

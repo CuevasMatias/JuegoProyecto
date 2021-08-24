@@ -8,6 +8,13 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
 
 <body>
+<style> body {
+  background-image: url(../static/trabajo.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+</style>
 <nav class="navbar navbar-dark bg-primary p-1">
     <ul class="nav justify-content-end">
   <li class="nav-item">
@@ -24,13 +31,16 @@
 <p class="h1 m-3" align="center">Eliminar Pregunta</p>
 
 {% block body %}
-    <h2>Detalle de pregunta a eliminar</h2>
-    {{pregunta.autor}}
+    <h2>Detalle de pregunta a eliminar</h2><br>
+<p class="h5 m-1">Autor : {{pregunta.autor}}</p>
     <br>
-    {{pregunta.pregunta}}
+<p class="h5 m-1">Pregunta :  {{pregunta.pregunta}}</p>
     <br>
-    {{pregunta.fecha_creacion}}
-<a class="btn btn-danger" href="{% url 'juego:detalle_pregunta' pregunta.pk %}">Cancelar</a>
-<a class="btn btn-success" href="{% url 'juego:confirmar_eliminacion' pregunta.pk %}">Confirmar</a>
+<p class="h5 m-1">Fecha de Creación :  {{pregunta.fecha_creacion}}</p>
+    <br>
+<p class="h5 m-1">Categoria :  {{pregunta.id_categoria}}</p>
+
+<div align="center"><a class="btn btn-danger" href="{% url 'juego:detalle_pregunta' pregunta.pk %}">Cancelar</a></div>
+<div align="center"><a class="btn btn-success" href="{% url 'juego:confirmar_eliminacion' pregunta.pk %}">Confirmar</a></div>
 
 {% endblock %}
