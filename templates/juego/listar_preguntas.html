@@ -17,15 +17,16 @@
 <nav class="navbar navbar-dark bg-primary p-1">
     <ul class="nav justify-content-end">
   <li class="nav-item">
-    <a class="nav-link active text-white h4"  aria-current="page" href="/login">Iniciar Sesion</a>
+    <a class="nav-link active text-white h4"  aria-current="page" href="/">Pagina de Inicio</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link text-white h4" href="https://es.wikipedia.org/wiki/Provincia_del_Chaco">Link</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link active text-white h4"  aria-current="page" href="/registro">Registrarse</a>
+    <a class="nav-link text-white h4" href="/juego/noticias">Info del Chaco</a>
   </li>
 </ul>
+    <ul class="nav justify-content_end">
+    <li class="nav-item" float="right">
+    <img src="../static/2logochaco.png" alt="2logochaco.png" width="105" height="75" >
+  </li>
 </nav>
 
 <p class="h1 m-3" align="center">¡Empezemos!</p>
@@ -55,7 +56,7 @@
 
         <br><br>
         {% endfor %}
-        <div align="center"><a class="btn btn-primary" href="{% url 'juego:vistar_partida' partida.pk %}">Enviar</a></div>
+        <div align="center"><button class="btn btn-primary" type="submit" >Enviar</button></div>
     </form>
     </div>
 {% endblock%}

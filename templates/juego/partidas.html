@@ -9,45 +9,38 @@
 
 <body>
 <style>body {
-  background-image: url(../static/trabajo.jpg);
+  background-image: url(../static/plazachaco.jpg);
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
 }
 </style>
 <nav class="navbar navbar-dark bg-primary p-1">
-    <ul class="nav justify-content-end">
+    <ul class="nav justify-content_end">
   <li class="nav-item">
     <a class="nav-link active text-white h4"  aria-current="page" href="/">Pagina Principal</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link text-white h4" href="/juego/crear">Crear Preguntas</a>
+    <a class="nav-link text-white h4" href="juego/noticias">Info del Chaco</a>
   </li>
-   <li class="nav-item">
-    <a class="nav-link text-white h4" href="/juego/respuestas">Listado de Respuestas</a>
-  </li>
-   <li class="nav-item">
-    <a class="nav-link text-white h4" href="/juego/categorias">Listado de Categoria</a>
-  </li>
-</ul>
+    </ul>
     <ul class="nav justify-content_end">
     <li class="nav-item" float="right">
     <img src="../static/2logochaco.png" alt="2logochaco.png" width="105" height="75" >
   </li>
 </nav>
-<p class="h1 m-3" align="center">Listado de Preguntas</p>
+<p class="h1 m-1 text-white" align="center">Partidas</p><br>
+<p class="h5 m-1 text-white" align="center">Puntaje de tu partida </p>
+
 {% block body %}
     <div class="row justify-content-md-center m-5">
         <div class="mb-3 col-lg-6">
-                {% for pregunta in preguntas %}
+                {% for p in partidas %}
                  <div class="alert alert-primary" role="alert">
-                     {{pregunta}}
-                <a class="btn btn-primary" href="{% url 'juego:detalle_pregunta' pregunta.pk %}">Detalle</a>
-                <a class="btn btn-danger" href="{% url 'juego:eliminar' pregunta.pk %}">Eliminar</a>
-                     <a class="btn btn-warning" href="{% url 'juego:editar' pregunta.pk %}">Editar</a>
-                 </div>
+                    <b>Usuario:</b>{{p.usuario}} - <b>Fecha:</b>{{p.fecha}} -<b>Puntuaje:</b>{{p.resultado}}
+                </div>
                 {% endfor %}
         </div>
      </div>
-<div align="center"><a class="btn btn-success" href="/admin">Admin Django</a></div>
+<div align="center"><a href="/logout" class="btn btn-primary m-3">Cerrar Sesión</a></div>
 {% endblock %}

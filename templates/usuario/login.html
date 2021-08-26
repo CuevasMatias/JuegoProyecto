@@ -15,7 +15,7 @@
 }
 </style>
 
-<nav class="navbar navbar-dark bg-primary p-2">
+<nav class="navbar navbar-dark bg-primary p-1">
     <ul class="nav justify-content-end">
   <li class="nav-item">
     <a class="nav-link text-white h4" href="/registro">Registarse</a>
@@ -24,6 +24,10 @@
    <a class="nav-link text-white h4" href="/">Pagina de Inicio</a>
   </li>
 </ul>
+    <ul class="nav justify-content_end">
+    <li class="nav-item" float="right">
+    <img src="../static/2logochaco.png" alt="2logochaco.png" width="105" height="75" >
+  </li>
 </nav>
 <h1 class="display-2 text-white m-3" align="center">Ingresar</h1>
   <div class="nav justify-content-md-center p-5">
@@ -40,6 +44,12 @@
              {% if form.errors %}
              <div class="alert alert-primary" role="alert">
                  Su nombre de usuario y contraseña no coinciden. Por favor revise los datos ingresados e intente nuevamente/ Debe registrarse primero
+             </div>
+             {% endif %}
+
+             {% if request.user.username and not user.permission_required %}
+             <div class="alert alert-primary" role="alert" align="center">
+                 Usted no posee los permisos para poder añadir o modificar. Por favor vuelva a la pagina de inicio.
              </div>
              {% endif %}
              <button type="submit" class="btn btn-primary">Ingresar Datos</button>

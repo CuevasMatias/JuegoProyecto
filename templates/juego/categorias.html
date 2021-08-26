@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>Vista de Preguntas</title>
+        <title>Categorias</title>
     </head>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
@@ -21,13 +21,13 @@
     <a class="nav-link active text-white h4"  aria-current="page" href="/">Pagina Principal</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link text-white h4" href="/juego/crear">Crear Preguntas</a>
+    <a class="nav-link text-white h4" href="/juego/crear_categoria">Crear Categorias</a>
+  </li>
+   <li class="nav-item">
+    <a class="nav-link text-white h4" href="/juego/preguntas">Listado de Preguntas</a>
   </li>
    <li class="nav-item">
     <a class="nav-link text-white h4" href="/juego/respuestas">Listado de Respuestas</a>
-  </li>
-   <li class="nav-item">
-    <a class="nav-link text-white h4" href="/juego/categorias">Listado de Categoria</a>
   </li>
 </ul>
     <ul class="nav justify-content_end">
@@ -35,16 +35,16 @@
     <img src="../static/2logochaco.png" alt="2logochaco.png" width="105" height="75" >
   </li>
 </nav>
-<p class="h1 m-3" align="center">Listado de Preguntas</p>
+<p class="h1 m-3" align="center">Listado de Categorias</p>
 {% block body %}
     <div class="row justify-content-md-center m-5">
         <div class="mb-3 col-lg-6">
-                {% for pregunta in preguntas %}
+                {% for categoria in categorias %}
                  <div class="alert alert-primary" role="alert">
-                     {{pregunta}}
-                <a class="btn btn-primary" href="{% url 'juego:detalle_pregunta' pregunta.pk %}">Detalle</a>
-                <a class="btn btn-danger" href="{% url 'juego:eliminar' pregunta.pk %}">Eliminar</a>
-                     <a class="btn btn-warning" href="{% url 'juego:editar' pregunta.pk %}">Editar</a>
+                     {{categoria}}
+                <a class="btn btn-primary" href="{% url 'juego:detalle_categoria' categoria.pk %}">Detalle</a>
+                <a class="btn btn-danger" href="{% url 'juego:eliminar_categoria' categoria.pk %}">Eliminar</a>
+                     <a class="btn btn-warning" href="{% url 'juego:editar_categoria' categoria.pk %}">Editar</a>
                  </div>
                 {% endfor %}
         </div>
